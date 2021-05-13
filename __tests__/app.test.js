@@ -1,5 +1,6 @@
-import { formatLocations } from '../lib/munge-utils';
+import { formatLocations, formatWeather } from '../lib/munge-utils';
 import locationData from '../data/location';
+import weatherData from '../data/weather';
 
 describe('API data mugging', () => {
 
@@ -17,6 +18,26 @@ describe('API data mugging', () => {
     const output = formatLocations(locationData);
 
     expect(output).toEqual(expectedGeo);
+  });
+
+
+
+  it('munges weather data', async () => {
+
+    const expectedWeather = 
+    [
+      {
+        'forecast': 'Few clouds',
+        'time': '2021-05-13',
+      },
+      {
+        'forecast': 'Few clouds',
+        'time': '2021-05-14',
+      },
+    ];
+    const output = formatWeather(weatherData);
+
+    expect(output).toEqual(expectedWeather);
   });
 
 
